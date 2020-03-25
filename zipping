@@ -1,0 +1,2 @@
+rm HTML_in_editor.zip
+zip -R HTML_in_editor.zip *js config.* *py  LICENSE *.md zipping --exclude \*~ \*zip ankiweb
