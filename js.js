@@ -1,11 +1,19 @@
 
 function set_html_src_fields() {
-    fnames = $("[id^=name]");
-    fnames.each(function (index, fname){
-        var $fname = $(fname);
-        var id = parseInt($fname.attr("id").substring(4));
-        $fname.prepend(`<a onclick='set_html_src_field(${id}, this);'>src</a>`);
-    });
+    $fnames = $("[id^=name]");
+    if ($fnames.length > 0) {
+        $fnames.each(function (index, fname){
+            var $fname = $(fname);
+            var i = parseInt($fname.attr("id").substring(4));
+            $fname.prepend(`<a onclick='set_html_src_field(${i}, this);'>src</a> `);
+        });
+    } else {
+        $fnames = $(".fname");
+        for (var i=0; i<$fnames.length; i++) {
+            var $fname = $($fnames[i]);
+            $fname.prepend(`<a onclick='set_html_src_field(${i}, this);'>src</a> `);
+        }
+    }
 }
 
 function set_html_src_field(id, a) {
