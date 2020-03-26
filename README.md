@@ -3,6 +3,8 @@
 Sometime, it's easier to see the html code of the field instead of the
 field rendered. This adds a button allowing to do this change.
 
+![example](ex.png)
+
 ## Warning
 It may be incompatible with other add-on altering the editor.
 
