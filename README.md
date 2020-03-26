@@ -6,7 +6,8 @@ field rendered. This adds a button allowing to do this change.
 ![example](ex.png)
 
 ## Warning
-It may be incompatible with other add-on altering the editor.
+It may be incompatible with other add-on altering the editor. In
+particular with "[Show LaTeX's result in editor/browser](https://ankiweb.net/shared/info/882784122)".
 
 ## Usage:
 Click on "<src>" above a field to see it's source. Click on "field"
