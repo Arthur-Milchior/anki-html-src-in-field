@@ -5,6 +5,7 @@ function deentities(str) {
     return str.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
 }
 var src = "&lt;src&gt;";
+
 function set_html_src_fields() {
     $fnames = $("[id^=name]");
     if ($fnames.length > 0) {
@@ -28,7 +29,7 @@ function set_html_src_field(id, a) {
     $td.attr("onblur", "onBlurSrc()");
     $a = $(a);
     $a.attr('onclick', `unset_html_src_field(${id}, this)`);
-    $a.html("field")
+    $a.html("<b>f</b><i>i</i><u>e</u><strike>l</strike><font color='#ff0000'>d</font>")
     td.innerHTML = entities(td.innerHTML);
 }
 
