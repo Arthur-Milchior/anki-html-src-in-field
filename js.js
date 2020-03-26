@@ -12,35 +12,45 @@ function set_html_src_fields() {
         $fnames.each(function (index, fname){
             var $fname = $(fname);
             var i = parseInt($fname.attr("id").substring(4));
-            $fname.prepend(`<a onclick='set_html_src_field(${i}, this);'>${src}</a> `);
+            $fname.prepend(`<a onclick='set_html_src_field(${i});' id="src_a_${i}">${src}</a> `);
         });
     } else {
         $fnames = $(".fname");
         for (var i=0; i<$fnames.length; i++) {
             var $fname = $($fnames[i]);
-            $fname.prepend(`<a onclick='set_html_src_field(${i}, this);'>${src}</a> `);
+            $fname.prepend(`<a onclick='set_html_src_field(${i});' id="src_a_${i}">${src}</a> `);
         }
     }
 }
 
-function set_html_src_field(id, a) {
+function set_html_src_field(id) {
     var $td = $(`#f${id}`);
     var td = $td[0];
     $td.attr("onblur", "onBlurSrc()");
-    $a = $(a);
-    $a.attr('onclick', `unset_html_src_field(${id}, this)`);
+    $a = $(`#src_a_${id}`);
+    $a.attr('onclick', `unset_html_src_field(${id})`);
     $a.html("<b>f</b><i>i</i><u>e</u><strike>l</strike><font color='#ff0000'>d</font>")
     td.innerHTML = entities(td.innerHTML);
+    pycmd("src remembered:" + id + ":true");
 }
 
-function unset_html_src_field(id, a) {
+function set_src_fields(src) {
+    for (var id=0; id<src.length; id++) {
+        if (src[id]) {
+            set_html_src_field(id);
+        }
+    }
+}
+
+function unset_html_src_field(id) {
     var $td = $(`#f${id}`);
     var td = $td[0];
     $td.attr("onblur", "onBlur()");
-    $a = $(a);
-    $a.attr('onclick', `set_html_src_field(${id}, this)`);
+    $a = $(`#src_a_${id}`);
+    $a.attr('onclick', `set_html_src_field(${id})`);
     $a.html(src);
     td.innerHTML = deentities(td.innerHTML);
+    pycmd("src remembered:" + id + ":false");
 }
 
 function onBlurSrc() {

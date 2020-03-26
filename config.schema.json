@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "HTML source in editor",
+  "properties": {
+    "src remembered": {
+      "description": "Whether to remember when you press on \"src\" and apply it to other notes.",
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

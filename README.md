@@ -13,6 +13,9 @@ particular with "[Show LaTeX's result in editor/browser](https://ankiweb.net/sha
 Click on "<src>" above a field to see it's source. Click on "field"
 afterward to have the normal view back.
 
+## Configuration:
+You can decide to remember which fields should show source, and show
+sources of the same field in other notes.
 
 ## Links, licence and credits
 
