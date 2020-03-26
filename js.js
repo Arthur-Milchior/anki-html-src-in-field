@@ -1,17 +1,23 @@
-
+function entities(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+function deentities(str) {
+    return str.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+}
+var src = "&lt;src&gt;";
 function set_html_src_fields() {
     $fnames = $("[id^=name]");
     if ($fnames.length > 0) {
         $fnames.each(function (index, fname){
             var $fname = $(fname);
             var i = parseInt($fname.attr("id").substring(4));
-            $fname.prepend(`<a onclick='set_html_src_field(${i}, this);'>src</a> `);
+            $fname.prepend(`<a onclick='set_html_src_field(${i}, this);'>${src}</a> `);
         });
     } else {
         $fnames = $(".fname");
         for (var i=0; i<$fnames.length; i++) {
             var $fname = $($fnames[i]);
-            $fname.prepend(`<a onclick='set_html_src_field(${i}, this);'>src</a> `);
+            $fname.prepend(`<a onclick='set_html_src_field(${i}, this);'>${src}</a> `);
         }
     }
 }
@@ -19,15 +25,21 @@ function set_html_src_fields() {
 function set_html_src_field(id, a) {
     var $td = $(`#f${id}`);
     var td = $td[0];
-    $td.off("blur");
-    $td.blur(onBlurSrc);
+    $td.attr("onblur", "onBlurSrc()");
     $a = $(a);
-    $a.removeAttr("onClick");
-    html = td.innerHTML;
-    html = html.replace(/&/g, "&amp;");
-    html = html.replace(/</g, "&lt;")
-    html = html.replace(/>/g, "&gt;")
-    td.innerHTML = html;
+    $a.attr('onclick', `unset_html_src_field(${id}, this)`);
+    $a.html("field")
+    td.innerHTML = entities(td.innerHTML);
+}
+
+function unset_html_src_field(id, a) {
+    var $td = $(`#f${id}`);
+    var td = $td[0];
+    $td.attr("onblur", "onBlur()");
+    $a = $(a);
+    $a.attr('onclick', `set_html_src_field(${id}, this)`);
+    $a.html(src);
+    td.innerHTML = deentities(td.innerHTML);
 }
 
 function onBlurSrc() {
@@ -50,10 +62,7 @@ function saveFieldSrc(type) {
         // no field has been focused yet
         return;
     }
-    html = currentField.innerHTML;
-    html = html.replace(/&amp;/g, "&");
-    html = html.replace(/&lt;/g, "<");
-    html = html.replace(/&gt;/g, ">");
+    html = deentities(currentField.innerHTML);
     // type is either 'blur' or 'key'
     pycmd(type +
           ":" +

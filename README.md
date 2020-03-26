@@ -8,7 +8,10 @@ field rendered. This adds a button allowing to do this change.
 ## Warning
 It may be incompatible with other add-on altering the editor.
 
-## TODO
+## Usage:
+Click on "<src>" above a field to see it's source. Click on "field"
+afterward to have the normal view back.
+
 
 ## Links, licence and credits
 
