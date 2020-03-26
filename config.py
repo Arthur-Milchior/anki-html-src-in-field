@@ -43,10 +43,8 @@ def getUserOption(keys=None, default=None, set_to_default_if_missing=True):
     # last element
     key = keys[-1]
     if key in userOption:
-        print("found")
         return userOption[key]
     else:
-        print(f"not found «{key}» in {userOption}")
         if set_to_default_if_missing:
             userOption[key] = default
             writeConfig()
