@@ -1,19 +1,19 @@
 # HTML source in editor
 ## Rationale
-Sometime, it's easier to see the html code of the field instead of the
+Sometimes it's easier to see the html code of the field instead of the
 field rendered. This adds a button allowing to do this change.
 
 ![example](ex.png)
 
 ## Warning
-It may be incompatible with other add-on altering the editor. In
+It may be incompatible with other add-ons altering the editor. In
 particular with "[Show LaTeX's result in editor/browser](https://ankiweb.net/shared/info/882784122)".
 
-## Usage:
-Click on "<src>" above a field to see it's source. Click on "field"
+## Usage
+Click on `<src>` above a field to see the field's source. Click on the fieldname 
 afterward to have the normal view back.
 
-## Configuration:
+## Configuration
 You can decide to remember which fields should show source, and show
 sources of the same field in other notes.
 
