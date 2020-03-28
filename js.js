@@ -1,5 +1,10 @@
 function entities(str) {
-    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    if (str == "<br>"){
+        // Keeping <br> because the field should not be empty.
+        return "<br>";
+    } else {
+        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
 }
 function deentities(str) {
     return str.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
