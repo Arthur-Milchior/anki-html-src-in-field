@@ -10,7 +10,7 @@ It may be incompatible with other add-on altering the editor. In
 particular with "[Show LaTeX's result in editor/browser](https://ankiweb.net/shared/info/882784122)".
 
 ## Usage:
-Click on "<src>" above a field to see it's source. Click on "field"
+Click on "&lt;src&gt;" above a field to see it's source. Click on "field"
 afterward to have the normal view back.
 
 ## Configuration:
