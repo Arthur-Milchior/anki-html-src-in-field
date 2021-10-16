@@ -19,7 +19,7 @@ gui_hooks.webview_will_set_content.append(on_webview_will_set_content)
 
 def loadNote(self):
     self.web.eval(f"""set_html_src_fields()""")
-    flds = self.note.model()["flds"]
+    flds = self.note.note_type()["flds"]
     srcs = [fld.get("src remembered", False) for fld in flds]
     self.web.eval(f"set_src_fields({json.dumps(srcs)});")
 gui_hooks.editor_did_load_note.append(loadNote)
@@ -38,7 +38,7 @@ def onBridge(handled, str, editor):
     else:
         (cmd, ord, to) = str.split(":", 2)
         cur = int(ord)
-        flds = editor.note.model()['flds']
+        flds = editor.note.note_type()['flds']
         flds[cur]['src remembered'] = json.loads(to)
     return (True, None)
 
